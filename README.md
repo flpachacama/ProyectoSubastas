@@ -3,3 +3,5 @@
 Changoluisa
 Pachacama
 Pogo
+
+Tercer Parcial 
