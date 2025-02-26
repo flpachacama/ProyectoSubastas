@@ -5,15 +5,15 @@ import { CssBaseline } from '@mui/material';
 import { theme } from './theme/theme';
 import { store } from './store/store';
 import MainLayout from './components/layout/MainLayout';
+import HomePage from './pages/HomePage';
+import AuctionsPage from './pages/AuctionsPage';
 import { ROUTES } from './utils/routes';
 import './App.css';
 
-// Importar páginas (las crearemos después)
-const HomePage = () => <div>Home Page</div>; // Placeholder
-const LoginPage = () => <div>Login Page</div>; // Placeholder
-const RegisterPage = () => <div>Register Page</div>; // Placeholder
-const AuctionsPage = () => <div>Auctions Page</div>; // Placeholder
-const CarsPage = () => <div>Cars Page</div>; // Placeholder
+// Placeholder para páginas pendientes
+const LoginPage = () => <div>Login Page</div>;
+const RegisterPage = () => <div>Register Page</div>;
+const CarsPage = () => <div>Cars Page</div>;
 
 function App() {
   return (
@@ -28,7 +28,6 @@ function App() {
               <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
               <Route path={ROUTES.AUCTIONS.LIST} element={<AuctionsPage />} />
               <Route path={ROUTES.CARS.LIST} element={<CarsPage />} />
-              {/* Redirigir rutas no encontradas al inicio */}
               <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
             </Routes>
           </MainLayout>
