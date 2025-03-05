@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
@@ -13,13 +12,11 @@ import {
   Avatar,
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
-import { logout } from '../../store/slices/authSlice';
-import { ROUTES } from '../../utils/routes';
+import { useAuth } from '../../context/AuthContext';
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { user, logout, isAuthenticated } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {
@@ -31,13 +28,13 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    logout();
     handleClose();
-    navigate(ROUTES.LOGIN);
+    navigate('/login');
   };
 
   const handleProfile = () => {
-    navigate(ROUTES.PROFILE);
+    navigate('/profile');
     handleClose();
   };
 
@@ -48,7 +45,7 @@ const Navbar = () => {
           variant="h6"
           component="div"
           sx={{ flexGrow: 1, cursor: 'pointer' }}
-          onClick={() => navigate(ROUTES.HOME)}
+          onClick={() => navigate('/')}
         >
           Subastas de Autos
         </Typography>
@@ -56,15 +53,9 @@ const Navbar = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Button
             color="inherit"
-            onClick={() => navigate(ROUTES.AUCTIONS.LIST)}
+            onClick={() => navigate('/auctions')}
           >
             Subastas
-          </Button>
-          <Button
-            color="inherit"
-            onClick={() => navigate(ROUTES.CARS.LIST)}
-          >
-            Autos
           </Button>
 
           {isAuthenticated ? (
@@ -93,13 +84,13 @@ const Navbar = () => {
             <>
               <Button
                 color="inherit"
-                onClick={() => navigate(ROUTES.LOGIN)}
+                onClick={() => navigate('/login')}
               >
                 Iniciar Sesión
               </Button>
               <Button
                 color="inherit"
-                onClick={() => navigate(ROUTES.REGISTER)}
+                onClick={() => navigate('/register')}
               >
                 Registrarse
               </Button>

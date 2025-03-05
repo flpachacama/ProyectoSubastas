@@ -8,9 +8,9 @@ export const theme = createTheme({
       dark: '#1565c0',
     },
     secondary: {
-      main: '#9c27b0',
-      light: '#ba68c8',
-      dark: '#7b1fa2',
+      main: '#dc004e',
+      light: '#ff4081',
+      dark: '#9a0036',
     },
     success: {
       main: '#2e7d32',
@@ -29,7 +29,11 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
       'Roboto',
+      '"Helvetica Neue"',
       'Arial',
       'sans-serif',
     ].join(','),
